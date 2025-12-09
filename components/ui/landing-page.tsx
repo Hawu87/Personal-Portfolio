@@ -229,7 +229,7 @@ export function HawulethuLandingPage() {
                 . I build data-driven products at the intersection of AI, analytics, and user experience.
               </h1>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Computer Science & Mathematics at the University of Arkansas at Pine Bluff - May &apos;26&apos;
+                Computer Science & Mathematics at the University of Arkansas at Pine Bluff - May &apos;26
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" onClick={() => scrollToSection("projects")}>
