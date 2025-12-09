@@ -222,14 +222,14 @@ export function HawulethuLandingPage() {
                 AI Product Management & Data Storytelling
               </motion.div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Hi, I'm{" "}
+                Hi, I&apos;m{" "}
                 <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                   Hawulethu Ndlovu
                 </span>
                 . I build data-driven products at the intersection of AI, analytics, and user experience.
               </h1>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Computer Science & Mathematics at the University of Arkansas at Pine Bluff - May '26'
+                Computer Science & Mathematics at the University of Arkansas at Pine Bluff - May &apos;26&apos;
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" onClick={() => scrollToSection("projects")}>
@@ -604,9 +604,9 @@ export function HawulethuLandingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Let's Talk</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Let&apos;s Talk</h2>
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-              I'm open to connecting with recruiters, collaborators, and teams for internships, product roles, or exciting projects.
+              I&apos;m open to connecting with recruiters, collaborators, and teams for internships, product roles, or exciting projects.
               Feel free to reach out!
             </p>
 
