@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
+import Link from "next/link"
 
 export function HawulethuLandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -394,13 +395,24 @@ export function HawulethuLandingPage() {
           <div className="grid md:grid-cols-2 gap-6">
             {[
               {
+                title: "AI Note Summarizer",
+                tagline: "Create notes, summarize with AI, and keep everything private per user.",
+                date: "2025",
+                description: "A full-stack web application that enables users to create, organize, and summarize notes using AI. Built with Next.js, Supabase, and OpenAI integration.",
+                tech: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui", "Supabase", "OpenAI", "Vercel"],
+                image: "/AI cover photo.png",
+                detailPage: "/projects/ai-note-summarizer",
+                liveUrl: "https://ai-notes-summarizer-alpha.vercel.app"
+              },
+              {
                 title: "Virulence Genes Insights WebApp",
                 role: "Product Manager & Developer",
                 date: "Nov 2025",
                 team: "Team of 3",
                 description: "Built a data-driven website using React, Tailwind CSS, Plotly.js. Created 6 visualizations of virulence genes and validated Excel summaries for 18 gene entries. Designed a clear data storyline and UX so users can interpret gene patterns effectively.",
                 tech: ["React", "Tailwind CSS", "Plotly.js"],
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+                liveUrl: "https://gene-visualizations.vercel.app/"
               },
               {
                 title: "Global Internet Prices and Disparities",
@@ -408,7 +420,8 @@ export function HawulethuLandingPage() {
                 date: "Apr 2025",
                 description: "Research on global internet usage & pricing, presented at MAA OK-AR conference. Used R, Excel, Tableau, PowerPoint. Identified trends and disparities in pricing & usage; focused on affordability & user experience.",
                 tech: ["R", "Excel", "Tableau", "PowerPoint"],
-                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+                liveUrl: "https://github.com/Hawu87/Sales_Data_Analysis"
               }
             ].map((project, index) => (
               <motion.div
@@ -420,19 +433,49 @@ export function HawulethuLandingPage() {
                 whileHover={{ y: -5 }}
                 className="rounded-3xl border border-border bg-card overflow-hidden hover:shadow-lg transition-all"
               >
-                <div className="relative h-48">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+                {/* Image section - clickable if detailPage exists */}
+                {project.detailPage ? (
+                  <Link href={project.detailPage} className="block">
+                    <div className="relative h-48">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </Link>
+                ) : (
+                  <div className="relative h-48">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+
                 <div className="p-6">
+                  {/* Title and metadata - clickable if detailPage exists */}
                   <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <h3 className="text-xl font-bold mb-1">{project.title}</h3>
-                      <p className="text-sm text-muted-foreground">{project.role} • {project.date}</p>
+                    <div className="flex-1">
+                      {project.detailPage ? (
+                        <Link href={project.detailPage} className="block hover:opacity-80 transition-opacity">
+                          <h3 className="text-xl font-bold mb-1">{project.title}</h3>
+                        </Link>
+                      ) : (
+                        <h3 className="text-xl font-bold mb-1">{project.title}</h3>
+                      )}
+                      {project.role && (
+                        <p className="text-sm text-muted-foreground">{project.role} • {project.date}</p>
+                      )}
+                      {!project.role && project.date && (
+                        <p className="text-sm text-muted-foreground">{project.date}</p>
+                      )}
+                      {project.tagline && (
+                        <p className="text-sm text-muted-foreground mt-1 italic">{project.tagline}</p>
+                      )}
                       {project.team && <p className="text-sm text-muted-foreground">{project.team}</p>}
                     </div>
                   </div>
@@ -447,31 +490,29 @@ export function HawulethuLandingPage() {
                       </span>
                     ))}
                   </div>
-                  {/* Links to the projects */}
-                  {project.title === "Virulence Genes Insights WebApp" && (
-                    <a
-                      href="https://gene-visualizations.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button variant="outline" size="sm">
-                        View Project
-                        <ExternalLink className="w-4 h-4 ml-2" />
-                      </Button>
-                    </a>
-                  )}
-                  {project.title === "Global Internet Prices and Disparities" && (
-                    <a
-                      href="https://github.com/Hawu87/Sales_Data_Analysis"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button variant="outline" size="sm">
-                        View Project
-                        <ExternalLink className="w-4 h-4 ml-2" />
-                      </Button>
-                    </a>
-                  )}
+                  {/* Action buttons - separate from card link */}
+                  <div className="flex gap-3">
+                    {project.detailPage && (
+                      <Link href={project.detailPage}>
+                        <Button variant="outline" size="sm">
+                          Learn More
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </Link>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button variant={project.detailPage ? "default" : "outline"} size="sm">
+                          {project.detailPage ? "Live Demo" : "View Project"}
+                          <ExternalLink className="w-4 h-4 ml-2" />
+                        </Button>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}
