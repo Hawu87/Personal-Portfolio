@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
+import { SafeImage } from "@/components/SafeImage"
 import Link from "next/link"
 
 export function HawulethuLandingPage() {
@@ -334,18 +335,6 @@ export function HawulethuLandingPage() {
                   "Managed JIRA backlog, led sprints → increased on-time deliverables"
                 ],
                 description: "Migrating education team from email-based contracts to Laserfiche"
-              },
-              {
-                company: "Bain & Company",
-                role: "Building Entrepreneurial Leaders Intern",
-                location: "San Francisco, CA",
-                period: "May 2024",
-                highlights: [
-                  "Led analysis with team of 5; Excel modeling cut anticipated project timeline by 1 week",
-                  "Synthesized surveys, expert calls, G2 insights → 3 high-potential growth opportunities",
-                  "Delivered data-driven PowerPoint story for Partners"
-                ],
-                description: "Real client case with consultants"
               }
             ].map((exp, index) => (
               <motion.div
@@ -396,9 +385,9 @@ export function HawulethuLandingPage() {
             {[
               {
                 title: "AI Note Summarizer",
-                tagline: "Create notes, summarize with AI, and keep everything private per user.",
+                role: "Full-Stack Developer",
                 date: "2025",
-                description: "A full-stack web application that enables users to create, organize, and summarize notes using AI. Built with Next.js, Supabase, and OpenAI integration.",
+                description: "Built a full-stack web application that allows users to create, organize, and summarize notes using AI. Implemented secure user authentication and per-user data isolation with Supabase, ensuring notes and summaries remain private. Developed a modern, responsive UI with Next.js and integrated AI-powered summarization using OpenAI APIs.",
                 tech: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui", "Supabase", "OpenAI", "Vercel"],
                 image: "/AI cover photo.png",
                 detailPage: "/projects/ai-note-summarizer",
@@ -434,10 +423,11 @@ export function HawulethuLandingPage() {
                 className="rounded-3xl border border-border bg-card overflow-hidden hover:shadow-lg transition-all"
               >
                 {/* Image section - clickable if detailPage exists */}
+                {/* Using SafeImage to handle Unsplash image failures gracefully (DNS/timeout issues) */}
                 {project.detailPage ? (
                   <Link href={project.detailPage} className="block">
                     <div className="relative h-48">
-                      <Image
+                      <SafeImage
                         src={project.image}
                         alt={project.title}
                         fill
@@ -447,7 +437,7 @@ export function HawulethuLandingPage() {
                   </Link>
                 ) : (
                   <div className="relative h-48">
-                    <Image
+                    <SafeImage
                       src={project.image}
                       alt={project.title}
                       fill
@@ -472,9 +462,6 @@ export function HawulethuLandingPage() {
                       )}
                       {!project.role && project.date && (
                         <p className="text-sm text-muted-foreground">{project.date}</p>
-                      )}
-                      {project.tagline && (
-                        <p className="text-sm text-muted-foreground mt-1 italic">{project.tagline}</p>
                       )}
                       {project.team && <p className="text-sm text-muted-foreground">{project.team}</p>}
                     </div>

@@ -49,7 +49,7 @@ export default function AINoteSummarizerPage() {
             AI Note Summarizer
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-            Create notes, summarize with AI, and keep everything private per user.
+            Full-Stack Developer • 2025
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button size="lg" asChild>
@@ -147,16 +147,8 @@ export default function AINoteSummarizerPage() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">What I Built</h2>
           <div className="bg-card rounded-3xl border border-border p-8">
-            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-              AI Note Summarizer is a full-stack web application that enables users to create, 
-              organize, and summarize notes using AI. I built this to explore modern web development 
-              practices and integrate AI capabilities into a user-friendly interface.
-            </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Key challenges I solved included implementing secure authentication with Supabase, 
-              setting up Row Level Security (RLS) policies to ensure user data privacy, integrating 
-              OpenAI&apos;s API for intelligent note summarization, and creating a responsive, 
-              accessible UI with dark/light mode support using shadcn/ui components.
+              Built a full-stack web application that allows users to create, organize, and summarize notes using AI. Implemented secure user authentication and per-user data isolation with Supabase, ensuring notes and summaries remain private. Developed a modern, responsive UI with Next.js and integrated AI-powered summarization using OpenAI APIs.
             </p>
           </div>
         </motion.section>
